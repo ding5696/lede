@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 
-name: DD-OP
+name: DD-OpenWRT
 
 on:
   push:
