@@ -58,6 +58,15 @@ jobs:
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
 
+      - name: 自定义插件主题。
+        run: |
+          cd package
+          mkdir openwrt-packages
+          cd openwrt-packages
+          git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
+          git clone https://github.com/Ameykyl/luci-app-koolproxyR
+          git clone https://github.com/rosywrt/luci-theme-rosy
+          
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
@@ -146,9 +155,12 @@ jobs:
           # 常用LuCI插件选择:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-adbyby-plus=y
-          CONFIG_PACKAGE_luci-app-aria2=y
-          CONFIG_PACKAGE_luci-app-baidupcs-web=y
-          CONFIG_PACKAGE_luci-app-docker=y
+          CONFIG_PACKAGE_luci-app-aria2=y 
+          CONFIG_PACKAGE_luci-app-attendedsysupgrade=y 
+          CONFIG_PACKAGE_luci-app-baidupcs-web=y 
+          CONFIG_PACKAGE_luci-app-cifsd=y 
+          CONFIG_PACKAGE_luci-app-docker=y 
+          CONFIG_PACKAGE_luci-app-filetransfer=y
           CONFIG_PACKAGE_luci-app-frpc=y
           CONFIG_PACKAGE_luci-app-hd-idle=y
           CONFIG_PACKAGE_luci-app-kodexplorer=y
@@ -161,11 +173,18 @@ jobs:
           CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=y
           CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
           CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
+          CONFIG_PACKAGE_luci-app-shairplay=y
+          CONFIG_PACKAGE_luci-app-statistics=y
+          CONFIG_PACKAGE_luci-app-syncdial=y
           CONFIG_PACKAGE_luci-app-ttyd=y
-          CONFIG_PACKAGE_luci-app-v2ray-server=y
+          CONFIG_PACKAGE_luci-app-transmission=y
+          CONFIG_PACKAGE_luci-app-netdata=y
+          CONFIG_PACKAGE_luci-app-unblockneteasemusic-go=y
+          CONFIG_PACKAGE_luci-app-unblockneteasemusic-mini=y
+          CONFIG_PACKAGE_luci-app-usb-printer=y
           CONFIG_PACKAGE_luci-app-verysync=y
           CONFIG_PACKAGE_luci-app-webadmin=y
-          CONFIG_PACKAGE_luci-app-wireguard=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
           EOF
 
